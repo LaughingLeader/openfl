@@ -42,6 +42,8 @@ class TextField extends InteractiveObject {
 	public var type (get, set):TextFieldType;
 	public var wordWrap (get, set):Bool;
 	
+	public var caretIndex (get, set):Int;
+	
 	private var __embedFonts:Bool;
 	
 	
@@ -145,7 +147,8 @@ class TextField extends InteractiveObject {
 	
 	// Getters & Setters
 	
-	
+	private function get_caretIndex ():Int { return lime_text_field_get_caret_index (__handle); }
+	private function set_caretIndex (value:Int):Int { lime_text_field_set_caret_index (__handle, value); return value; }
 	
 	
 	private function get_autoSize ():TextFieldAutoSize { return Type.createEnumIndex (TextFieldAutoSize, lime_text_field_get_auto_size (__handle)); }
@@ -290,7 +293,8 @@ class TextField extends InteractiveObject {
 	private static var lime_text_field_get_line_metrics = Lib.load ("lime", "lime_text_field_get_line_metrics", 3);
 	private static var lime_text_field_get_line_offset = Lib.load ("lime", "lime_text_field_get_line_offset", 2);
 	
-	
+	private static var lime_text_field_get_caret_index = Lib.load ("lime", "lime_text_field_get_caret_index", 1);
+	private static var lime_text_field_set_caret_index = Lib.load ("lime", "lime_text_field_set_caret_index", 2);
 }
 
 
